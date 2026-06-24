@@ -45,6 +45,44 @@ function get_all_departments()
     return get_all_lines($sql);
 }
 
+function get_all_departments_croissant()
+{
+    $sql = "SELECT d.dept_no,
+                   d.dept_name,
+                   CONCAT(e.first_name, ' ', e.last_name) AS manager_name,
+                   (SELECT COUNT(*)
+                      FROM dept_emp de
+                     WHERE de.dept_no = d.dept_no
+                       AND de.to_date = '9999-01-01') AS nb_employees
+            FROM departments d
+            LEFT JOIN dept_manager dm
+                   ON dm.dept_no = d.dept_no
+                  AND dm.to_date = '9999-01-01'
+            LEFT JOIN employees e
+                   ON e.emp_no = dm.emp_no
+            ORDER BY d.dept_name ASC";
+    return get_all_lines($sql);
+}
+
+function get_all_departments_decroissant()
+{
+    $sql = "SELECT d.dept_no,
+                   d.dept_name,
+                   CONCAT(e.first_name, ' ', e.last_name) AS manager_name,
+                   (SELECT COUNT(*)
+                      FROM dept_emp de
+                     WHERE de.dept_no = d.dept_no
+                       AND de.to_date = '9999-01-01') AS nb_employees
+            FROM departments d
+            LEFT JOIN dept_manager dm
+                   ON dm.dept_no = d.dept_no
+                  AND dm.to_date = '9999-01-01'
+            LEFT JOIN employees e
+                   ON e.emp_no = dm.emp_no
+            ORDER BY d.dept_name DESC";
+    return get_all_lines($sql);
+}
+
 function get_jobs_stats()
 {
     // Statistiques par emploi (titre actuel) :
