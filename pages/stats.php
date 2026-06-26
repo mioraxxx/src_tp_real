@@ -1,32 +1,40 @@
 <?php
-    include('../inc/functions.php');
-    $stats = get_jobs_stats();
+include('../inc/functions.php');
+$stats = get_jobs_stats();
 ?>
-<html>
-    <head>
-        <title>Statistiques par emploi</title>
-    </head>
-    <body>
-    <p><a href="index.php">&larr; Retour aux départements</a></p>
-    <h1>Statistiques par emploi</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-    <table border="1">
-        <tr>
-            <th>Emploi</th>
-            <th>Hommes</th>
-            <th>Femmes</th>
-            <th>Total</th>
-            <th>Salaire moyen</th>
-        </tr>
-        <?php foreach ($stats as $row) { ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../design/theme-dark/style.css">
+    <title>Statistiques par emploi</title>
+</head>
+<body>
+        <div class="container">
+        <p><a href="index.php">&larr; Retour aux départements</a></p>
+        <h1 style="text-align: center;">Statistiques par emploi</h1>
+
+        <table border="1" class="table">
             <tr>
-                <td><?= $row['title'] ?></td>
-                <td><?= $row['nb_hommes'] ?></td>
-                <td><?= $row['nb_femmes'] ?></td>
-                <td><?= $row['nb_total'] ?></td>
-                <td><?= number_format($row['salaire_moyen'], 0, ',', ' ') ?> €</td>
+                <th>Emploi</th>
+                <th>Hommes</th>
+                <th>Femmes</th>
+                <th>Total</th>
+                <th>Salaire moyen</th>
             </tr>
-        <?php } ?>
-    </table>
-    </body>
+            <?php foreach ($stats as $row) { ?>
+                <tr>
+                    <td><?= $row['title'] ?></td>
+                    <td><?= $row['nb_hommes'] ?></td>
+                    <td><?= $row['nb_femmes'] ?></td>
+                    <td><?= $row['nb_total'] ?></td>
+                    <td><?= number_format($row['salaire_moyen'], 0, ',', ' ') ?> €</td>
+                </tr>
+            <?php } ?>
+        </table>
+</div>
+</body>
+
 </html>

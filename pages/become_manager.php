@@ -57,15 +57,17 @@ $manager = $current_dept ? get_current_manager($current_dept['dept_no']) : null;
             <?php } ?>
 
             <!-- b. Manager en cours affiché en haut -->
-            <p><strong>Manager en cours :</strong>
-                <?= $manager ? $manager['manager_name'] . ' (depuis le ' . $manager['from_date'] . ')' : 'aucun' ?>
-            </p>
+            <div class="card">
+                <p><strong>Manager en cours :</strong>
+                    <?= $manager ? $manager['manager_name'] . ' (depuis le ' . $manager['from_date'] . ')' : 'aucun' ?>
+                </p>
 
-            <form method="post" action="become_manager.php?emp_no=<?= urlencode($emp_no) ?>">
-                <p>Date de début : <input type="date" name="from_date"></p>
-                <p><input type="submit" value="Devenir manager"></p>
-            </form>
-        <?php } ?>
+                <form method="post" action="become_manager.php?emp_no=<?= urlencode($emp_no) ?>">
+                    <p>Date de début : <input class="form-control" type="date" name="from_date"></p>
+                    <p><input class="btn" type="submit" value="Devenir manager"></p>
+                </form>
+            <?php } ?>
+            </div>
     </div>
 
 </body>

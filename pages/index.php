@@ -16,8 +16,8 @@ $departments = get_all_departments();
 
 <body>
     <div class="container">
-        <div class="navbar">
-            <h1>Liste des départements</h1>
+        <h1 style="text-align:center">Liste des départements</h1>
+        <div class="navbar form-check input">
             <p><a href="search.php">🔍 Rechercher un employé</a></p>
             <p><a href="stats.php">📊 Statistiques par emploi</a></p>
             <p><a href="dept_form.php">➕ Ajouter un département</a></p>
