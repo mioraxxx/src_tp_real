@@ -1,6 +1,8 @@
 <?php
 include('../inc/functions.php');
 $stats = get_jobs_stats();
+$moyenne_salaire = get_moyenne_salaire();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +16,7 @@ $stats = get_jobs_stats();
 <body>
         <div class="container">
         <p><a href="index.php">&larr; Retour aux départements</a></p>
+        <!-- <p><a href="test.php">Test</a></p> -->
         <h1 style="text-align: center;">Statistiques par emploi</h1>
 
         <table border="1" class="table">
@@ -30,7 +33,14 @@ $stats = get_jobs_stats();
                     <td><?= $row['nb_hommes'] ?></td>
                     <td><?= $row['nb_femmes'] ?></td>
                     <td><?= $row['nb_total'] ?></td>
-                    <td><?= number_format($row['salaire_moyen'], 0, ',', ' ') ?> €</td>
+                    <?php if($row['salaire_moyen'] < $moyenne_salaire[0]['moyenne_salaire'] ){ ?>
+                        <td style="color: green" ><?= number_format($row['salaire_moyen'], 0, ',', ' ') ?> €</td>
+                    <?php } else { ?>
+                        <td style="color: red" ><?= number_format($row['salaire_moyen'], 0, ',', ' ') ?> €</td>
+
+                    <?php } ?>
+                    
+                    
                 </tr>
             <?php } ?>
         </table>

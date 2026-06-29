@@ -387,3 +387,45 @@ function get_title_history($emp_no)
     $sql = sprintf($sql, $emp_no);
     return get_all_lines($sql);
 }
+
+
+function get_moyenne_salaire(){
+
+    
+
+    // $sql = "CREATE OR REPLACE VIEW v_listeSalaire AS  
+    //         ( SELECT t.title,
+    //                SUM(e.gender = 'M') AS nb_hommes,
+    //                SUM(e.gender = 'F') AS nb_femmes,
+    //                COUNT(*)            AS nb_total,
+    //                AVG(s.salary)       AS salaire_moyen
+    //         FROM titles t
+    //         INNER JOIN employees e
+    //                 ON e.emp_no = t.emp_no
+    //         INNER JOIN salaries s
+    //                 ON s.emp_no = t.emp_no
+    //                AND s.to_date = '9999-01-01'
+    //         WHERE t.to_date = '9999-01-01'
+    //         GROUP BY t.title
+    //         ORDER BY t.title; )";
+
+    $sql = "SELECT AVG(salaire_moyen) as moyenne_salaire FROM v_listeSalaire ";
+
+return get_all_lines($sql);
+
+}
+
+function modifier_salaire_de_toutlemonde($pourcentage){
+    // $sql1 = "select salary from salaries;";
+    // $liste_salaire = get_all_lines($sql1);
+    // foreach($liste_salaire as $liste){
+    //     $liste_salaire['salary'] 
+    // }
+    $sql = "update salaries set salary = salary + salary * ('$pourcentage' / 100) ";
+    execute_query($sql);
+}
+
+function get_all_salaire(){
+    $sql = "select * from salaries where to_date='9999-01-01' limit 100;";
+    return get_all_lines($sql);
+}

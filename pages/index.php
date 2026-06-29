@@ -22,13 +22,14 @@ $departments = get_all_departments();
             <p><a href="stats.php">📊 Statistiques par emploi</a></p>
             <p><a href="dept_form.php">➕ Ajouter un département</a></p>
             <p><a href="emp_form.php">➕ Ajouter un employé</a></p>
-    <?php if($_GET['teto'] == 0){ ?>
-        <p><a href="index.php?teto=1">📊 Trier les departements par nom</a></p>
-    <?php } elseif($_GET['teto'] == 1){
-        ?> <p><a href="index.php?teto=2">📊 Trier les departements par nom par ordre decroisssamt</a></p>
-   <?php } elseif ($_GET['teto'] == 2) { ?>
-    <p><a href="index.php?teto=1">📊 Trier les departements par nom par ordre croisssamt</a></p>
-   <?php } ?>
+            <?php if($_GET['teto'] == 0){ ?>
+                <p><a href="index.php?teto=1">📊 Trier les departements par nom</a></p>
+            <?php } elseif($_GET['teto'] == 1){
+                ?> <p><a href="index.php?teto=2">📊 Trier les departements par nom par ordre decroisssamt</a></p>
+            <?php } elseif ($_GET['teto'] == 2) { ?>
+                <p><a href="index.php?teto=1">📊 Trier les departements par nom par ordre croisssamt</a></p>
+            <?php } ?>
+            <p><a href="augmentation_salaire.php">Augmentation des salaires</a></p>
     
 
     
